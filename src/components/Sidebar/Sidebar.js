@@ -29,6 +29,39 @@ class Sidebar extends Component {
               <Link to={'/dashboard'} className="nav-link" activeClassName="active"><i className="icon-speedometer"></i> Dashboard <span className="badge badge-info">NEW</span></Link>
             </li>
             <li className="nav-title">
+              Shop
+            </li>
+            <li className="nav-item">
+              <Link to={'/shop/manageshop'} className="nav-link" activeClassName="active"><i className="icon-notebook"></i>จัดการ Shop</Link>
+            </li>
+            <li className="nav-title">
+              SKU
+            </li>
+            <li className="nav-item">
+              <Link to={'/dashboard'} className="nav-link"><i className="icon-screen-desktop"></i>กำหนดน้ำหนัก</Link>
+            </li>
+            <li className="nav-item">
+              <Link to={'/dashboard'} className="nav-link"><i className="icon-settings"></i>สถานะ SKU</Link>
+            </li>
+            <li className="nav-item">
+              <Link to={'/dashboard'} className="nav-link"><i className="icon-shuffle"></i>เชื่อมโยง Epicor ERP</Link>
+            </li>
+            <li className="nav-title">
+              จัดการ Users
+            </li>
+            <li className="nav-item">
+              <Link to={'/dashboard'} className="nav-link"><i className="icon-people"></i>จัดการกลุ่มผู้ใช้งาน</Link>
+            </li>
+            <li className="nav-item">
+              <Link to={'/dashboard'} className="nav-link"><i className="icon-user-following"></i>จัดการผู้ใช้งาน</Link>
+            </li>
+            <li className="nav-item">
+              <Link to={'/dashboard'} className="nav-link"><i className="icon-key"></i>สิทธิ์การใช้งาน</Link>
+            </li>
+
+
+            {/**************************/}
+            <li className="nav-title">
               UI Elements
             </li>
             <li className={this.activeRoute("/components")}>
@@ -68,26 +101,6 @@ class Sidebar extends Component {
                 </li>
               </ul>
             </li>
-            <li className={this.activeRoute("/icons")}>
-              <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-star"></i> Icons</a>
-              <ul className="nav-dropdown-items">
-                <li className="nav-item">
-                  <Link to={'/icons/font-awesome'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Font Awesome</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={'/icons/glyphicons'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Glyphicons</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={'/icons/glyphicons-filetypes'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Glyphicons Filetypes</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={'/icons/glyphicons-social'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Glyphicons Social</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={'/icons/simple-line-icons'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Simple Line Icons</Link>
-                </li>
-              </ul>
-            </li>
             <li className={this.activeRoute("/plugins")}>
               <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-energy"></i> Plugins</a>
               <ul className="nav-dropdown-items">
@@ -105,28 +118,9 @@ class Sidebar extends Component {
             <li className="nav-item">
               <Link to={'/charts'} className="nav-link" activeClassName="active"><i className="icon-pie-chart"></i> Charts</Link>
             </li>
-            <li className="divider"></li>
-            <li className="nav-title">
-              Extras
-            </li>
-            <li className="nav-item nav-dropdown">
-              <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-star"></i> Pages</a>
-              <ul className="nav-dropdown-items">
-                <li className="nav-item">
-                  <Link to={'/pages/login'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Login</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={'/pages/register'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Register</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={'/pages/404'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Error 404</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to={'/pages/500'} className="nav-link" activeClassName="active"><i className="icon-star"></i> Error 500</Link>
-                </li>
-              </ul>
-            </li>
           </ul>
+
+          {/**********************/}
         </nav>
       </div>
     )

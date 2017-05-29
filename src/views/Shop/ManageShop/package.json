@@ -1,0 +1,6 @@
+{
+  "name": "manageShop",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./manageShop.js"
+}
