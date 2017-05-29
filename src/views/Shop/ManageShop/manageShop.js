@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import { Button } from 'reactstrap'
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import ReactPagenav from 'react-pagenav'
+
+
 
 
 var ObjectRow = React.createClass({
@@ -46,6 +49,23 @@ var ObjectRow = React.createClass({
 
 class Tables extends Component {
 
+
+  state = {
+    page: 1
+    , total: 300
+    , pageSize: 10
+    , maxLink: 5
+
+    //optional pagenav unit render, must not be arrow function
+    //, unitRender: function (unit, index) { ... }
+
+    //optional pagenav render, replace default render function
+    //fully customize your pagenav html and function
+    //   ,render: (units, props) => { ... }
+  }
+
+
+
   constructor(props) {
     super(props);
 
@@ -57,7 +77,11 @@ class Tables extends Component {
 
 
 
-  toggle() {
+  handleClick = (page, e) => {
+    this.setState({ page: page })
+  }
+
+  toggle = () => {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
     });
@@ -65,7 +89,15 @@ class Tables extends Component {
 
 
   render() {
+
+    var createPageUrl = function (unit) {
+      return '#p?page=' + unit.page
+    }
+
+    var names = Object.keys(this.state)
     return (
+
+
       <div className="animated fadeIn">
         <div className="row">
           <div className="col-lg-12">
