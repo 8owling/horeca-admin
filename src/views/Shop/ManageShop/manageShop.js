@@ -93,38 +93,7 @@ class Tables extends Component {
                   <tbody>
 
 
-                    <tr>
-                      <td>MK Restualrant</td>
-                      <td>26/05/2017</td>
-                      <td>Phanumas S.</td>
-                      <td>
-                        <span className="badge badge-success">Active</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MK Restualrant</td>
-                      <td>26/05/2017</td>
-                      <td>Phanumas S.</td>
-                      <td>
-                        <span className="badge badge-danger">Banned</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MK Restualrant</td>
-                      <td>26/05/2017</td>
-                      <td>Phanumas S.</td>
-                      <td>
-                        <span className="badge badge-default">Inactive</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MK Restualrant</td>
-                      <td>26/05/2017</td>
-                      <td>Phanumas S.</td>
-                      <td>
-                        <span className="badge badge-warning">Pending</span>
-                      </td>
-                    </tr>
+
                     <tr>
                       <td>MK Restualrant</td>
                       <td>26/05/2017</td>
