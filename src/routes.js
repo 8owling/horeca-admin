@@ -1,5 +1,7 @@
 import React from 'react';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
+
+
 
 // Containers
 import Full from './containers/Full/'
@@ -44,7 +46,7 @@ import Widgets from './views/Widgets/'
 import ManageShop from './views/Shop/ManageShop/'
 
 export default (
-  <Router history={hashHistory}>
+  <Router >
     <Route path="/" name="Home" component={Full}>
       <IndexRoute component={Dashboard} />
       <Route path="dashboard" name="Dashboard" component={Dashboard} />
@@ -55,6 +57,22 @@ export default (
         <Route path="manageshop" name="Manage Shop" component={ManageShop} />
       </Route>
       {/********************* END SHOP *********************/}
+
+      {/********************* BEGIN SKU *********************/}
+      <Route path="sku/" name="SKU">
+        <IndexRoute component={Dashboard} />
+        <Route path="mangesku" name="Manage SKU" component={Dashboard} />
+      </Route>
+      {/********************* END SKU *********************/}
+
+      {/********************* BEGIN ROLES *********************/}
+      <Route path="roles/" name="ROLES">
+        <IndexRoute component={Dashboard} />
+        <Route path="mangeroles" name="Manage Roles" component={Dashboard} />
+      </Route>
+      {/********************* END SKU *********************/}
+
+
       <Route path="components/" name="Components">
         <IndexRoute component={Buttons} />
         <Route path="buttons" name="Buttons" component={Buttons} />

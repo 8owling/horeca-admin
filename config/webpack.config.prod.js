@@ -241,9 +241,5 @@ module.exports = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty'
-  },
-  devServer: {
-    port: 5555
-    //, inline: true
   }
 };

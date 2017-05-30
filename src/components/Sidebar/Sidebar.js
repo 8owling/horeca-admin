@@ -38,30 +38,18 @@ class Sidebar extends Component {
               SKU
             </li>
             <li className="nav-item">
-              <Link to={'/dashboard'} className="nav-link"><i className="icon-screen-desktop"></i>กำหนดน้ำหนัก</Link>
-            </li>
-            <li className="nav-item">
-              <Link to={'/dashboard'} className="nav-link"><i className="icon-settings"></i>สถานะ SKU</Link>
-            </li>
-            <li className="nav-item">
-              <Link to={'/dashboard'} className="nav-link"><i className="icon-shuffle"></i>เชื่อมโยง Epicor ERP</Link>
+              <Link to={'/sku/mangesku'} className="nav-link" activeClassName="active"><i className="icon-settings"></i>จัดการ SKU</Link>
             </li>
             <li className="nav-title">
               จัดการ Users
             </li>
             <li className="nav-item">
-              <Link to={'/dashboard'} className="nav-link"><i className="icon-people"></i>จัดการกลุ่มผู้ใช้งาน</Link>
-            </li>
-            <li className="nav-item">
-              <Link to={'/dashboard'} className="nav-link"><i className="icon-user-following"></i>จัดการผู้ใช้งาน</Link>
-            </li>
-            <li className="nav-item">
-              <Link to={'/dashboard'} className="nav-link"><i className="icon-key"></i>สิทธิ์การใช้งาน</Link>
+              <Link to={'roles/mangeroles'} className="nav-link" activeClassName="active"><i className="icon-user-following"></i>จัดการผู้ใช้งาน</Link>
             </li>
 
 
             {/**************************/}
-            <li className="nav-title">
+            {/*<li className="nav-title">
               UI Elements
             </li>
             <li className={this.activeRoute("/components")}>
@@ -118,9 +106,11 @@ class Sidebar extends Component {
             <li className="nav-item">
               <Link to={'/charts'} className="nav-link" activeClassName="active"><i className="icon-pie-chart"></i> Charts</Link>
             </li>
+          */}
+
+            {/**********************/}
           </ul>
 
-          {/**********************/}
         </nav>
       </div>
     )

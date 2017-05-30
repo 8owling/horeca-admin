@@ -221,6 +221,7 @@ function addMiddleware(devServer) {
 
 function runDevServer(host, port, protocol) {
   var devServer = new WebpackDevServer(compiler, {
+
     // Enable gzip compression of generated files.
     compress: true,
     // Silence WebpackDevServer's own logs since they're generally not useful.
@@ -260,7 +261,9 @@ function runDevServer(host, port, protocol) {
     },
     // Enable HTTPS if the HTTPS environment variable is set to 'true'
     https: protocol === "https",
-    host: host
+    host: host,
+    //historyApiFallback: true
+
   });
 
   // Our custom middleware proxies requests to /index.html or a remote API.
