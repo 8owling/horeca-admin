@@ -43,6 +43,7 @@ function ensureSlash(path, needsSlash) {
   } else {
     return path;
   }
+
 }
 
 function getPublicUrl(appPackageJson) {
