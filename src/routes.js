@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // Containers
 import Full from './containers/Full/'
@@ -44,13 +44,13 @@ import Widgets from './views/Widgets/'
 import ManageShop from './views/Shop/ManageShop/'
 
 export default (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path="/" name="Home" component={Full}>
       <IndexRoute component={Dashboard} />
       <Route path="dashboard" name="Dashboard" component={Dashboard} />
 
       {/********************* BEGIN SHOP *********************/}
-      <Route path="shop/" name="shop">
+      <Route path="shop" name="shop">
         <IndexRoute component={ManageShop} />
         <Route path="manageshop" name="Manage Shop" component={ManageShop} />
       </Route>
