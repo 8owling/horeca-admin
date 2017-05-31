@@ -44,11 +44,7 @@ import Widgets from './views/Widgets/'
 import ManageShop from './views/Shop/ManageShop/'
 
 export default (
-<<<<<<< HEAD
-  <Router history={browserHistory}>
-=======
   <Router >
->>>>>>> 086f25870a048a3d6be72ae81e3ec3087d96d8be
     <Route path="/" name="Home" component={Full}>
       <IndexRoute component={Dashboard} />
       <Route path="dashboard" name="Dashboard" component={Dashboard} />
