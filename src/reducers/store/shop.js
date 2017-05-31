@@ -5,22 +5,28 @@ export const shopData = {
             id: 0,
             img: '..public/images/shop/mk_logo.png',
             shopName: 'MK Restaurant',
-            username: 'Taylor Swift1',
-            role: 'user',
+            description: ' XXXXXXXXXXXX',
+            sale: 'Taylor Swift1',
+            saleUsername: 'Taylor.Swift',
+            salePassword: '123456'
         },
         {
             id: 1,
             img: '..public/images/shop/mk_logo.png',
             shopName: 'MK Restaurant',
+            description: ' XXXXXXXXXXXX',
             username: 'Taylor Swift2',
-            role: 'user',
+            saleUsername: 'Taylor.Swift',
+            salePassword: '123456'
         },
         {
             id: 2,
             img: '..public/images/shop/mk_logo.png',
             shopName: 'MK Restaurant',
+            description: ' XXXXXXXXXXXX',
             username: 'Taylor Swift3',
-            role: 'user',
+            saleUsername: 'Taylor.Swift',
+            salePassword: '123456'
         },
 
     ]

@@ -1,67 +1,46 @@
 import React, { Component } from 'react';
 
-import { Button } from 'reactstrap'
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import ReactPagenav from 'react-pagenav'
+//import ReactTable from 'react-table'
+
+import ReactTable from '../../../../lib/index'
+import 'react-table/react-table.css'
 
 
 
 
-var ObjectRow = React.createClass({
 
-  toggle() {
+class ManageShop extends Component {
+
+
+
+  // sidebarToggle(e) {
+  //   e.preventDefault();
+  //   document.body.classList.toggle('sidebar-hidden');
+  // }
+
+
+  // setTableOption(event) {
+  //   const target = event.target
+  //   const value = target.type === 'checkbox' ? target.checked : target.value
+  //   const name = target.name
+  //   this.setState({
+  //     tableOptions: {
+  //       ...this.state.tableOptions,
+  //       [name]: value
+  //     }
+  //   })
+  // }
+
+  setTableOption = (event) => {
+    const target = event.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const name = target.name
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
-  },
-  render: function () {
-    return (
-      <tr>
-        <td>{this.props.index}MK Restualrant</td>
-        <td>26/05/2017</td>
-        <td>Phanumas S.</td>
-        <td>
-          <span className="badge badge-success">Active</span>
-        </td>
-        <td>
-          <div>
-            {/*<ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-              <DropdownToggle caret color="primary" size="sm">
-                Action
-                            </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem header>Header</DropdownItem>
-                <DropdownItem disabled>Action</DropdownItem>
-                <DropdownItem>Another Action</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Another Action</DropdownItem>
-              </DropdownMenu>
-            </ButtonDropdown>*/}
-          </div>
-        </td>
-      </tr>
-
-
-    );
-  },
-});
-
-
-class Tables extends Component {
-
-
-  state = {
-    page: 1
-    , total: 300
-    , pageSize: 10
-    , maxLink: 5
-
-    //optional pagenav unit render, must not be arrow function
-    //, unitRender: function (unit, index) { ... }
-
-    //optional pagenav render, replace default render function
-    //fully customize your pagenav html and function
-    //   ,render: (units, props) => { ... }
+      tableOptions: {
+        ...this.state.tableOptions,
+        [name]: value
+      }
+    })
   }
 
 
@@ -69,106 +48,115 @@ class Tables extends Component {
   constructor(props) {
     super(props);
 
-    this.toggle = this.toggle.bind(this);
+    const data = [
+      {
+        shopName: 'Phanumas Linsley',
+        description: 'Test Test Test Test',
+        sale: {
+          saleUsername: 'Taylor.swift',
+          salePassword: '123456'
+        }
+      },
+      {
+        shopName: 'Tanner Linsley ddDDD',
+        description: 'Test Test Test Test',
+        sale: {
+          saleUsername: 'Jason.Maurer',
+          salePassword: '123456'
+        }
+
+      }]
+
+
     this.state = {
-      dropdownOpen: false
-    };
-  }
-
-
-
-  handleClick = (page, e) => {
-    this.setState({ page: page })
-  }
-
-  toggle = () => {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
+      tableOptions: {
+        loading: false,
+        showPagination: true,
+        showPageSizeOptions: true,
+        showPageJump: true,
+        collapseOnSortingChange: true,
+        collapseOnPageChange: true,
+        collapseOnDataChange: true,
+        freezeWhenExpanded: false,
+        filterable: true,
+        sortable: true,
+        resizable: true
+      },
+      data: data
+    }
+    this.setTableOption = this.setTableOption
   }
 
 
   render() {
 
-    var createPageUrl = function (unit) {
-      return '#p?page=' + unit.page
-    }
+    // ///////////////
 
-    var names = Object.keys(this.state)
+    const columns = [
+      {
+        Header: 'ชื่อร้านค้า',
+        //accessor: 'shopName', // String-based value accessors!
+        //filterMethod: (filter, row) => (row[filter.id].includes(filter.value))
+        id: 'shopName',
+        accessor: d => d.shopName,
+        filterMethod: (filter, row) => (row[filter.id].includes(filter.value))
+        //filterMethod: (filter, row) => (row[filter.id].startsWith(filter.value) && row[filter.id].endsWith(filter.value))
+      },
+      {
+        Header: 'Description',
+        accessor: 'description',
+        Cell: props => <span className='number'>{props.value}</span>, // Custom cell components!
+        filterMethod: (filter, row) => (row[filter.id].includes(filter.value))
+      },
+      {
+        id: 'SaleName', // Required because our accessor is not a string
+        Header: 'Friend Name',
+        accessor: d => d.sale.saleUsername, // Custom value accessors!
+        filterMethod: (filter, row) => (row[filter.id].includes(filter.value))
+      },
+      {
+        Header: props => <span>Friend Age</span>, // Custom header components!
+        accessor: 'sale.salePassword'
+      }
+    ]
+
+
     return (
 
+      <div>
+        {
+          Object.keys(this.state.tableOptions).map(optionKey => {
+            const optionValue = this.state.tableOptions[optionKey]
+            return (
+              <tr key={optionKey}>
+                <td>{optionKey}</td>
+                <td style={{ paddingLeft: 10, paddingTop: 5 }}>
+                  <input type='checkbox'
+                    name={optionKey}
+                    checked={optionValue}
+                    onChange={this.setTableOption}
+                  />
+                </td>
+              </tr>
+            )
+          })
+        }
+        <div className='table-wrap'>
+          <ReactTable
+            className='-striped -highlight'
+            data={this.state.data}
+            columns={columns}
+            defaultPageSize={5}
+            defaultFilterMethod={(filter, row) => (String(row[filter.id]) === filter.value)}
+            {...this.state.tableOptions}
 
-      <div className="animated fadeIn">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="card">
-              <div className="card-header">
-                <i className="fa fa-align-justify"></i> รายการร้านค้า
-              </div>
-              <div className="card-block">
-                <table className="table table-bordered table-striped table-condensed">
-                  <thead>
-                    <tr>
-                      <th>ชื่อร้านค้า</th>
-                      <th>วันที่สร้าง</th>
-                      <th>พนักงานขาย</th>
-                      <th>สถานะ</th>
-                      <th>จัดการ</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {[...Array(10)].map((x, i) =>
-                      <ObjectRow key={i + 1} index={i + 1} />
-                    )}
-                  </tbody>
-                  <tbody>
-
-
-
-                    <tr>
-                      <td>MK Restualrant</td>
-                      <td>26/05/2017</td>
-                      <td>Phanumas S.</td>
-                      <td>
-                        <span className="badge badge-success">Active</span>
-                      </td>
-                      <td>
-                        <div>
-                          <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                            <DropdownToggle caret color="primary" size="sm">
-                              Action
-                            </DropdownToggle>
-                            <DropdownMenu>
-                              <DropdownItem header>Header</DropdownItem>
-                              <DropdownItem disabled>Action</DropdownItem>
-                              <DropdownItem>Another Action</DropdownItem>
-                              <DropdownItem divider />
-                              <DropdownItem>Another Action</DropdownItem>
-                            </DropdownMenu>
-                          </ButtonDropdown>
-                        </div>
-                      </td>
-                    </tr>
-
-
-                  </tbody>
-                </table>
-                <ul className="pagination">
-                  <li className="page-item"><a className="page-link" href="#">Prev</a></li>
-                  <li className="page-item active">
-                    <a className="page-link" href="#">1</a>
-                  </li>
-                  <li className="page-item"><a className="page-link" href="#">2</a></li>
-                  <li className="page-item"><a className="page-link" href="#">3</a></li>
-                  <li className="page-item"><a className="page-link" href="#">4</a></li>
-                  <li className="page-item"><a className="page-link" href="#">Next</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          />
         </div>
 
+        {/*<div style={{ textAlign: 'center' }}>
+          <br />
+          <em>Tip: Hold shift when sorting to multi-sort!</em>
+        </div>*/}
 
 
       </div>
@@ -177,4 +165,29 @@ class Tables extends Component {
   }
 }
 
-export default Tables;
+
+
+
+
+
+
+
+
+const CodeHighlight = require('../../../components/codeHighlight').default
+//const source = require('!raw!./ManageShop')
+
+//export default ManageShop;
+
+
+export default () => (
+  <div className="animated fadeIn">
+    <div className="row">
+      <div className="col-sm-12">
+        <div className="card">
+          <ManageShop />
+          <CodeHighlight>{() => ManageShop}</CodeHighlight>
+        </div>
+      </div>
+    </div>
+  </div>
+)
