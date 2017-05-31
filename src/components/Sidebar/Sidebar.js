@@ -49,7 +49,7 @@ class Sidebar extends Component {
 
 
             {/**************************/}
-            {/*<li className="nav-title">
+            <li className="nav-title">
               UI Elements
             </li>
             <li className={this.activeRoute("/components")}>
@@ -106,7 +106,24 @@ class Sidebar extends Component {
             <li className="nav-item">
               <Link to={'/charts'} className="nav-link" activeClassName="active"><i className="icon-pie-chart"></i> Charts</Link>
             </li>
-          */}
+          
+            <li className={this.activeRoute("/pages")}>
+              <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-energy"></i> Plugins</a>
+              <ul className="nav-dropdown-items">
+                <li className="nav-item">
+                  <Link to={'/pages/login'} className="nav-link" activeClassName="active"><i className="icon-cursor"></i> Login</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={'/pages/register'} className="nav-link" activeClassName="active"><i className="fa fa-spinner"></i> Register</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={'/pages/page404'} className="nav-link" activeClassName="active"><i className="fa fa-spinner"></i> Page404</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to={'/pages/page500'} className="nav-link" activeClassName="active"><i className="fa fa-spinner"></i> Page500</Link>
+                </li>
+              </ul>
+            </li>
 
             {/**********************/}
           </ul>

@@ -34,9 +34,9 @@ import Spinners from './views/Plugins/Spinners/'
 
 // Pages
 import Login from './views/Pages/Login/'
-//import Register from './views/Pages/Register/'
-//import Page404 from './views/Pages/Page404/'
-//import Page500 from './views/Pages/Page500/'
+import Register from './views/Pages/Register/'
+import Page404 from './views/Pages/Page404/'
+import Page500 from './views/Pages/Page500/'
 
 import Widgets from './views/Widgets/'
 
@@ -44,11 +44,7 @@ import Widgets from './views/Widgets/'
 import ManageShop from './views/Shop/ManageShop/'
 
 export default (
-<<<<<<< HEAD
-  <Router history={browserHistory}>
-=======
   <Router >
->>>>>>> 086f25870a048a3d6be72ae81e3ec3087d96d8be
     <Route path="/" name="Home" component={Full}>
       <IndexRoute component={Dashboard} />
       <Route path="dashboard" name="Dashboard" component={Dashboard} />
@@ -61,21 +57,21 @@ export default (
       {/********************* END SHOP *********************/}
 
       {/********************* BEGIN SKU *********************/}
-      <Route path="sku/" name="SKU">
+      <Route path="sku" name="SKU">
         <IndexRoute component={Dashboard} />
         <Route path="mangesku" name="Manage SKU" component={Dashboard} />
       </Route>
       {/********************* END SKU *********************/}
 
       {/********************* BEGIN ROLES *********************/}
-      <Route path="roles/" name="ROLES">
+      <Route path="roles" name="ROLES">
         <IndexRoute component={Dashboard} />
         <Route path="mangeroles" name="Manage Roles" component={Dashboard} />
       </Route>
       {/********************* END SKU *********************/}
 
 
-      <Route path="components/" name="Components">
+      <Route path="components" name="Components">
         <IndexRoute component={Buttons} />
         <Route path="buttons" name="Buttons" component={Buttons} />
         <Route path="cards" name="Cards" component={Cards} />
@@ -85,12 +81,14 @@ export default (
         <Route path="tables" name="Tables" component={Tables} />
         <Route path="tabs" name="Tabs" component={Tabs} />
       </Route>
-      <Route path="forms/" name="Forms">
+
+      <Route path="forms" name="Forms">
         <IndexRoute component={BasicForms} />
         <Route path="basic-forms" name="Basic Forms" component={BasicForms} />
         <Route path="advanced-forms" name="Advanced Forms" component={AdvancedForms} />
       </Route>
-      <Route path="plugins/" name="Plugins">
+
+      <Route path="plugins" name="Plugins">
         <IndexRoute component={LoadingButtons} />
         <Route path="loading-buttons" name="Loading Buttons" component={LoadingButtons} />
         <Route path="spinners" name="Loading Buttons" component={Spinners} />
@@ -98,9 +96,14 @@ export default (
       <Route path="widgets" name="Widgets" component={Widgets} />
       <Route path="charts" name="Charts" component={Charts} />
     </Route>
-    <Route path="pages/" name="Pages" component={Login}>
+
+    <Route path="pages" name="Pages">
       <IndexRoute component={Login} />
       <Route path="login" name="Login Page" component={Login} />
+      <Route path="register" name="Register Page" component={Register} />
+      <Route path="page404" name="Page404 Page" component={Page404} />
+      <Route path="page500" name="Page500 Page" component={Page500} />
     </Route>
+    
   </Router>
 );
