@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-//import ReactTable from 'react-table'
+import ReactTable from 'react-table'
 
-import ReactTable from '../../../../lib/index'
+//import ReactTable from '../../../../lib/index'
 import 'react-table/react-table.css'
 
 
