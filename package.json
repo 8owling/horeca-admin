@@ -46,6 +46,7 @@
     "whatwg-fetch": "2.0.2"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "chart.js": "2.5.0",
     "react": "15.4.2",
     "react-addons-css-transition-group": "15.5.0",
@@ -61,6 +62,7 @@
     "react-text-mask": "4.1.0",
     "reactstrap": "4.5.0",
     "redux": "^3.6.0",
+    "redux-form": "^6.7.0",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {

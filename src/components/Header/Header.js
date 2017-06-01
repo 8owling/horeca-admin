@@ -56,9 +56,8 @@ class Header extends Component {
               <DropdownMenu className="dropdown-menu-right">
                 <DropdownItem><i className="fa fa-shield"></i> Change Password</DropdownItem>
                 <DropdownItem>
-                  <Link to={'/pages/login'}><i className="fa fa-lock"></i> Login</Link>
+                  <Link to={'/signout'}><i className="fa fa-lock"></i> Logout</Link>
                 </DropdownItem>
-
               </DropdownMenu>
             </Dropdown>
           </li>

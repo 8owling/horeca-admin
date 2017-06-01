@@ -43,10 +43,19 @@ import Widgets from './views/Widgets/'
 //Shop
 import ManageShop from './views/Shop/ManageShop/'
 
+// Auth
+import CheckAuth from './components/Auth/CheckAuth'
+import Signin from './components/Auth/Signin'
+import Signout from './components/Auth/Signout'
+
 export default (
   <Router >
-    <Route path="/" name="Home" component={Full}>
+    <Route path='/signin' component={Signin} />
+    <Route path='/signout' component={Signout} />
+
+    <Route path="/" name="Home" component={CheckAuth(Full)}>
       <IndexRoute component={Dashboard} />
+
       <Route path="dashboard" name="Dashboard" component={Dashboard} />
 
       {/********************* BEGIN SHOP *********************/}
