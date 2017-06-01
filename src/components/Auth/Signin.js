@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import * as actions from '../../actions'
 
 import { Field, reduxForm } from 'redux-form'
-import { FormGroup, FormText } from 'reactstrap';
 
 
 const validate = values => {
@@ -141,5 +140,7 @@ function mapStateToProps(state) {
     }
 }
 export default connect(mapStateToProps, actions)(reduxForm({
-    form: 'signinForm'
+    form: 'signinForm',
+    validate, // <--- validation function given to redux-form
+    warn, // <--- warning function given to redux-form
 })(Signin));
