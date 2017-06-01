@@ -72,7 +72,7 @@ class Signin extends Component {
     )
 
     render() {
-        const { handleSubmit, pristine, reset, submitting } = this.props;
+        const { handleSubmit, pristine, /*reset,*/ submitting } = this.props;
         return (
             <div className="app flex-row align-items-center">
                 <div className="container">

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormGroup, Label, FormText, InputGroup, InputGroupAddon, Input } from 'reactstrap';
+import { FormGroup, Label, FormText, InputGroup, InputGroupAddon,/* Input*/ } from 'reactstrap';
 import { MaskedInput } from 'react-text-mask'
 import Select from 'react-select';
 
@@ -66,9 +66,9 @@ var options = [
   { value: 'WY', label: 'Wyoming' },
 ];
 
-function logChange(val) {
-    console.log("Selected: " + val);
-}
+// function logChange(val) {
+//     console.log("Selected: " + val);
+// }
 
 class AdvancedForms extends Component {
 

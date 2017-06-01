@@ -7,7 +7,6 @@ export default function (ComposedComponent) {
             router: PropTypes.object
         }
         componentWillMount() {
-            console.log('xxxxxxxxxxxxxxx' + this.props.authenticated);
             if (!this.props.authenticated) {
                 this.context.router.push('/signin');
             } else {
@@ -16,7 +15,6 @@ export default function (ComposedComponent) {
         }
 
         componentWillUpdate(nextProps) {
-            console.log('uuuuuuuuuuuuuuuuuu' + this.props.authenticated);
             if (!nextProps.authenticated) {
                 this.context.router.push('/signin');
             }
