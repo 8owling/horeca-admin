@@ -9,39 +9,10 @@ import 'react-table/react-table.css'
 
 
 
+
 class ManageShop extends Component {
 
 
-
-  // sidebarToggle(e) {
-  //   e.preventDefault();
-  //   document.body.classList.toggle('sidebar-hidden');
-  // }
-
-
-  // setTableOption(event) {
-  //   const target = event.target
-  //   const value = target.type === 'checkbox' ? target.checked : target.value
-  //   const name = target.name
-  //   this.setState({
-  //     tableOptions: {
-  //       ...this.state.tableOptions,
-  //       [name]: value
-  //     }
-  //   })
-  // }
-
-  setTableOption = (event) => {
-    const target = event.target
-    const value = target.type === 'checkbox' ? target.checked : target.value
-    const name = target.name
-    this.setState({
-      tableOptions: {
-        ...this.state.tableOptions,
-        [name]: value
-      }
-    })
-  }
 
 
 
@@ -69,6 +40,7 @@ class ManageShop extends Component {
 
 
     this.state = {
+      loading: true,
       tableOptions: {
         loading: false,
         showPagination: true,
@@ -86,6 +58,34 @@ class ManageShop extends Component {
     }
     this.setTableOption = this.setTableOption
   }
+
+
+  componentWillDidMount() {
+    console.log("componentWillDidMount : ");
+  }
+  componentDidMount() {
+    console.log("componentDidMount : ");
+
+  }
+  componentDidUpdate() {
+    console.log("componentDidUpdate : ");
+    console.log(this.state.loading);
+  }
+
+  setTableOption = (event) => {
+    const target = event.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const name = target.name
+    this.setState({
+      tableOptions: {
+        ...this.state.tableOptions,
+        [name]: value
+      }
+    })
+
+    console.log(this.state.tableOptions.loading);
+  }
+
 
 
   render() {
@@ -143,6 +143,7 @@ class ManageShop extends Component {
         }
         <div className='table-wrap'>
           <ReactTable
+            loading={this.state.loading}
             className='-striped -highlight'
             data={this.state.data}
             columns={columns}
@@ -168,26 +169,16 @@ class ManageShop extends Component {
 
 
 
-
-
-
-
-
-const CodeHighlight = require('../../../components/codeHighlight').default
-//const source = require('!raw!./ManageShop')
-
-//export default ManageShop;
-
-
 export default () => (
+
   <div className="animated fadeIn">
     <div className="row">
       <div className="col-sm-12">
         <div className="card">
           <ManageShop />
-          <CodeHighlight>{() => ManageShop}</CodeHighlight>
         </div>
       </div>
     </div>
   </div>
+
 )

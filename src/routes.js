@@ -3,7 +3,7 @@ import { Router, Route, IndexRoute } from 'react-router';
 
 // Containers
 import Full from './containers/Full/'
-import Simple from './containers/Simple/'
+//import Simple from './containers/Simple/'
 
 import Charts from './views/Charts/'
 import Dashboard from './views/Dashboard/'
@@ -104,6 +104,6 @@ export default (
       <Route path="page404" name="Page404 Page" component={Page404} />
       <Route path="page500" name="Page500 Page" component={Page500} />
     </Route>
-    
+
   </Router>
 );

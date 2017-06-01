@@ -4,6 +4,10 @@ import './utils/prism'
 export default class CodeHighlight extends React.Component {
   render() {
     const { language, children } = this.props
+
+    console.log(this.props)
+
+
     return (
       <pre>
         <code className={'language-' + (language || 'jsx')}>
