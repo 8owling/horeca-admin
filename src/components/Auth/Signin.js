@@ -55,16 +55,16 @@ class Signin extends Component {
                     <input {...input} placeholder={placeholder} type={type} className="form-control" />
                 </div>
                 {touched && (
-                    (error && 
-                        <span className="help-block" style={{color:'red'}}>
+                    (error &&
+                        <span className="help-block" style={{ color: 'red' }}>
                             <i className="fa fa-exclamation-circle fa-lg"></i>&nbsp;{error}
                         </span>
-                    ) 
-                    || 
-                    (warning && 
-                    <span className="help-block" style={{color:'orange'}}>
-                        <i className="fa fa-exclamation-circle fa-lg"></i>&nbsp;{warning}
-                    </span>
+                    )
+                    ||
+                    (warning &&
+                        <span className="help-block" style={{ color: 'orange' }}>
+                            <i className="fa fa-exclamation-circle fa-lg"></i>&nbsp;{warning}
+                        </span>
                     )
                 )}
             </div>
