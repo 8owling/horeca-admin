@@ -3,7 +3,7 @@ import { Router, Route, IndexRoute } from 'react-router';
 
 // Containers
 import Full from './containers/Full/'
-import Simple from './containers/Simple/'
+//import Simple from './containers/Simple/'
 
 import Charts from './views/Charts/'
 import Dashboard from './views/Dashboard/'
@@ -43,10 +43,19 @@ import Widgets from './views/Widgets/'
 //Shop
 import ManageShop from './views/Shop/ManageShop/'
 
+// Auth
+import CheckAuth from './components/Auth/CheckAuth'
+import Signin from './components/Auth/Signin'
+import Signout from './components/Auth/Signout'
+
 export default (
   <Router >
-    <Route path="/" name="Home" component={Full}>
+    <Route path='/signin' component={Signin} />
+    <Route path='/signout' component={Signout} />
+
+    <Route path="/" name="Home" component={CheckAuth(Full)}>
       <IndexRoute component={Dashboard} />
+
       <Route path="dashboard" name="Dashboard" component={Dashboard} />
 
       {/********************* BEGIN SHOP *********************/}
@@ -104,6 +113,6 @@ export default (
       <Route path="page404" name="Page404 Page" component={Page404} />
       <Route path="page500" name="Page500 Page" component={Page500} />
     </Route>
-    
+
   </Router>
 );
