@@ -31,23 +31,17 @@ class Signin extends Component {
         this.props.signinUser(formProps);
     }
 
-    // <div className="form-group row">
-    //     <div className={`input-group ${group}`}>
-    //         <span className="input-group-addon"><i className={icon}></i></span>
-    //         <input {...input} placeholder={placeholder} type={type} className="form-control" />
-    //         {touched && ((error && <FormText color="muted">{error}</FormText>) || (warning && <span>{warning}</span>))}
-    //         <span className="help-block">This is a help text</span>
-    //     </div >
-    // </div>
+    renderAlert() {
+        if (this.props.errorMessage) {
+            return (
+                <div className='alert alert-danger' style={{marginTop:15,marginBottom:"-1rem"}}>
+                    <strong>Oops!</strong> {this.props.errorMessage}
+                </div>
+            );
+        }
+    }
 
-    // <div className="form-group row">
-    //                 <label className="col-md-3 form-control-label" for="text-input">Text Input</label>
-    //                 <div className="col-md-9">
-    //                   <input type="text" id="text-input" name="text-input" className="form-control" placeholder="Text"/>
-    //                   <span className="help-block">This is a help text</span>
-    //                 </div>
-    //               </div>
-    renderField = ({ input, placeholder, type, group, icon, meta: { touched, error, warning } }) => (
+    renderField = ({ input, placeholder, type, group, icon, value, meta: { touched, error, warning } }) => (
         <div className="form-group row">
             <div className="col-md-12">
                 <div className={`input-group /*${group}*/`} >
@@ -92,6 +86,7 @@ class Signin extends Component {
                                                 type="text"
                                                 group="mb-1"
                                                 icon="icon-user"
+                                                value={"b@b.com"}
                                             />
                                             <Field
                                                 name="password"
@@ -100,15 +95,17 @@ class Signin extends Component {
                                                 type="text"
                                                 group="mb-2"
                                                 icon="icon-lock"
+                                                value={"secret"}
                                             />
                                             <div className="row">
                                                 <div className="col-6">
-                                                    <button action='submit' className="btn btn-primary px-2" disabled={pristine || submitting} >Login</button>
+                                                    <button action='submit' className="btn btn-primary px-2" disabled={(pristine || submitting) && false} >Login</button>
                                                 </div>
                                                 <div className="col-6 text-right">
                                                     <button type="button" className="btn btn-link px-0">Forgot password?</button>
                                                 </div>
                                             </div>
+                                            {this.renderAlert()}
                                         </div>
                                     </form>
 
@@ -131,12 +128,13 @@ class Signin extends Component {
     }
 }
 
-//export default Signin;
-//export default connect(state => ({authenticated: state.auth.authenticated }))(Signin);
-
 function mapStateToProps(state) {
     return {
-        errorMessage: state.auth.error
+        errorMessage: state.auth.error,
+        initialValues: {
+            username: "b@b.com",
+            password: "secret",
+        }
     }
 }
 export default connect(mapStateToProps, actions)(reduxForm({
