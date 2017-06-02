@@ -10,7 +10,7 @@ export default function (ComposedComponent) {
             if (!this.props.authenticated) {
                 this.context.router.push('/signin');
             } else {
-                this.context.router.push('/');
+                //this.context.router.push('/');
             }
         }
 
