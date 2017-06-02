@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from './types';
 
 //const API_URL = 'http://192.168.4.161/laravel_study/public';
-const API_URL = 'http://localhost:90/testJWT/public/api/auth';
+const API_URL = 'http://192.168.4.95:90/testJWT/public/api/auth';
 
 export function signinUser({ username, password }) {
     return (dispatch) => {
