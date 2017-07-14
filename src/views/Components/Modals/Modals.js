@@ -18,13 +18,13 @@ class Modals extends Component {
     };
 
     this.toggle = this.toggle.bind(this);
-    this.toggleLarge= this.toggleLarge.bind(this);
-    this.toggleSmall= this.toggleSmall.bind(this);
-    this.togglePrimary= this.togglePrimary.bind(this);
-    this.toggleSuccess= this.toggleSuccess.bind(this);
-    this.toggleWarning= this.toggleWarning.bind(this);
-    this.toggleDanger= this.toggleDanger.bind(this);
-    this.toggleInfo= this.toggleInfo.bind(this);
+    this.toggleLarge = this.toggleLarge.bind(this);
+    this.toggleSmall = this.toggleSmall.bind(this);
+    this.togglePrimary = this.togglePrimary.bind(this);
+    this.toggleSuccess = this.toggleSuccess.bind(this);
+    this.toggleWarning = this.toggleWarning.bind(this);
+    this.toggleDanger = this.toggleDanger.bind(this);
+    this.toggleInfo = this.toggleInfo.bind(this);
   }
 
   toggle() {
@@ -79,6 +79,7 @@ class Modals extends Component {
               </div>
               <div className="card-block">
                 <Button onClick={this.toggle}>Launch demo modal</Button>
+
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                   <ModalBody>
@@ -114,7 +115,7 @@ class Modals extends Component {
                   </ModalFooter>
                 </Modal>
 
-                <hr/>
+                <hr />
 
                 <Button color="primary" onClick={this.togglePrimary}>Primary modal</Button>
                 <Modal isOpen={this.state.primary} toggle={this.togglePrimary} className={'modal-primary ' + this.props.className}>

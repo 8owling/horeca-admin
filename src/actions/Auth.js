@@ -8,7 +8,7 @@ const API_URL = 'http://192.168.4.95:90/testJWT/public/api/auth';
 export function signinUser({ username, password }) {
     return (dispatch) => {
         // Submit username and password to server
-        axios.post(`${API_URL}/signin`, { "email":username, "password":password })
+        axios.post(`${API_URL}/signin`, { "email": username, "password": password })
             .then(res => {
                 // If request is good
                 // - Update state to indicate user in authenticated

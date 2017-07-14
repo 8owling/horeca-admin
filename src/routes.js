@@ -42,6 +42,7 @@ import Widgets from './views/Widgets/'
 
 //Shop
 import ManageShop from './views/Shop/ManageShop/'
+import FormShop from './components/shop/FormShop'
 
 // Auth
 import CheckAuth from './components/Auth/CheckAuth'
@@ -62,6 +63,7 @@ export default (
       <Route path="shop" name="shop">
         <IndexRoute component={ManageShop} />
         <Route path="manageshop" name="Manage Shop" component={ManageShop} />
+        <Route path="addshop" name="Add Shop" component={FormShop} />
       </Route>
       {/********************* END SHOP *********************/}
 

@@ -27,6 +27,13 @@ const warn = values => {
 }
 
 class Signin extends Component {
+
+    componentWillMount() {
+        console.log("componentWillMount : ");
+        console.log(this.props)
+    }
+
+
     handleFormSubmit(formProps) {
         this.props.signinUser(formProps);
     }
@@ -34,7 +41,7 @@ class Signin extends Component {
     renderAlert() {
         if (this.props.errorMessage) {
             return (
-                <div className='alert alert-danger' style={{marginTop:15,marginBottom:"-1rem"}}>
+                <div className='alert alert-danger' style={{ marginTop: 15, marginBottom: "-1rem" }}>
                     <strong>Oops!</strong> {this.props.errorMessage}
                 </div>
             );
@@ -86,7 +93,6 @@ class Signin extends Component {
                                                 type="text"
                                                 group="mb-1"
                                                 icon="icon-user"
-                                                value={"b@b.com"}
                                             />
                                             <Field
                                                 name="password"
@@ -95,7 +101,6 @@ class Signin extends Component {
                                                 type="text"
                                                 group="mb-2"
                                                 icon="icon-lock"
-                                                value={"secret"}
                                             />
                                             <div className="row">
                                                 <div className="col-6">

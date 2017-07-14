@@ -7,49 +7,47 @@ const API_URL = 'http://192.168.4.161/laravel_study/public/';
 
 
 
-export function shopShowAll({ shop_name }) {
+export function shopShowAll() {
 
 
-    //console.log(shop_name);
-    return (dispatch) => {
-        // Submit username and password to server
-        axios.get(`${API_URL}shop/show`, { shop_name })
-            //axios.get('http://localhost/test/shopshow')
-
-            .then(res => {
-                // If request is good
-                // - Update state to indicate user in authenticated
-                dispatch({
-                    type: SHOP_SHOW_ALL,
-                    payload: res.data
-                });
-                // - Save the JWT token
-                //localStorage.setItem('token', res.data.token);
-                // - Redirect to the route '/feature'
-                // browserHistory.push('/');
+  //console.log(shop_name);
+  return (dispatch) => {
+    // Submit username and password to server
+    axios.get(`${API_URL}shop/show`)
+      .then(res => {
+        // If request is good
+        // - Update state to indicate user in authenticated
+        dispatch({
+          type: SHOP_SHOW_ALL,
+          payload: res.data
+        });
+        // - Save the JWT token
+        //localStorage.setItem('token', res.data.token);
+        // - Redirect to the route '/feature'
+        // browserHistory.push('/');
 
 
-            }).catch(function (error) {
-                // If request is bad
-                // - Show an error to the user
-                console.log('loadShopError : ' + error);
-                dispatch(loadShopError(error));
-                //console.log("error O.O: " + error);
-            });
-    }
+      }).catch(function (error) {
+        // If request is bad
+        // - Show an error to the user
+        console.log('loadShopError : ' + error);
+        dispatch(loadShopError(error));
+        //console.log("error O.O: " + error);
+      });
+  }
 };
 
 
 export function loadShopError(error) {
-    // console.log('loadShopError :' + error);
-    return {
-        type: LOAD_SHOP_ERROR,
-        payload: error
-    };
+  // console.log('loadShopError :' + error);
+  return {
+    type: LOAD_SHOP_ERROR,
+    payload: error
+  };
 };
 
- // Now let's mock the server.  It's job is simple: use the table model to sort and return the page data
-export function requestData  (pageSize, page, sorted, filtered) {
+// Now let's mock the server.  It's job is simple: use the table model to sort and return the page data
+export function requestData(pageSize, page, sorted, filtered) {
   return new Promise((resolve, reject) => {
     // On the server, you'll likely use SQL or noSQL or some other query language to do this.
     // For this mock, we'll just use lodash
