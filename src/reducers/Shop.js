@@ -6,7 +6,6 @@ const INITIAL = { all: [] };
 export default (state = INITIAL, action) => {
     switch (action.type) {
         case SHOP_SHOW_ALL:
-            //console.log(action.payload)
             return { ...state, all: action.payload };
         //all คือ การ Map state to props 
         case LOAD_SHOP_ERROR:

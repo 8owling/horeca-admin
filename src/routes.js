@@ -41,7 +41,7 @@ import Page500 from './views/Pages/Page500/'
 import Widgets from './views/Widgets/'
 
 //Shop
-import ManageShop from './views/Shop/ManageShop/'
+import ManageShop from './components/shop/manageShop'
 import FormShop from './components/shop/FormShop'
 
 // Auth

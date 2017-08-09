@@ -5,9 +5,37 @@ import { SHOP_SHOW_ALL, LOAD_SHOP_ERROR } from './types';
 const API_URL = 'http://192.168.4.161/laravel_study/public/';
 
 
+export function shopShowAll(condition, sort, page, pageSize) {
+
+  return (dispatch) => {
+
+    axios.get('http://192.168.4.161/laravel_study/public/shop/show', {
+      params: {
+        filtered: condition,
+        sorted: sort,
+        page: page,
+        pageSize: pageSize,
+      }
+    })
+      .then((res) => {
+
+        dispatch({
+          type: SHOP_SHOW_ALL,
+          payload: res.data
+        });
+
+      }).catch((e) => {
+        console.log("filterShopErr :" + e);
+      });
+
+  }
+
+};
 
 
-export function shopShowAll() {
+
+
+export function shopShowAll_Old() {
 
 
   //console.log(shop_name);
@@ -17,6 +45,7 @@ export function shopShowAll() {
       .then(res => {
         // If request is good
         // - Update state to indicate user in authenticated
+
         dispatch({
           type: SHOP_SHOW_ALL,
           payload: res.data
@@ -45,39 +74,3 @@ export function loadShopError(error) {
     payload: error
   };
 };
-
-// Now let's mock the server.  It's job is simple: use the table model to sort and return the page data
-export function requestData(pageSize, page, sorted, filtered) {
-  return new Promise((resolve, reject) => {
-    // On the server, you'll likely use SQL or noSQL or some other query language to do this.
-    // For this mock, we'll just use lodash
-    let filteredData = shopShowAll()
-    if (filtered.length) {
-      filteredData = filtered.reduce(
-        (filteredSoFar, nextFilter) => {
-          return filteredSoFar.filter(
-            (row) => {
-              return (row[nextFilter.id] + '').includes(nextFilter.value)
-            })
-        }
-        , filteredData)
-    }
-    const sortedData = filteredData.orderBy(filteredData, sorted.map(sort => {
-      return row => {
-        if (row[sort.id] === null || row[sort.id] === undefined) {
-          return -Infinity
-        }
-        return typeof row[sort.id] === 'string' ? row[sort.id].toLowerCase() : row[sort.id]
-      }
-    }), sorted.map(d => d.desc ? 'desc' : 'asc'))
-
-    // Be sure to send back the rows to be displayed and any other pertinent information, like how many pages there are total.
-    const res = {
-      rows: sortedData.slice(pageSize * page, (pageSize * page) + pageSize),
-      pages: Math.ceil(filteredData.length / pageSize)
-    }
-
-    // Here we'll simulate a server response with 500ms of delay.
-    setTimeout(() => resolve(res), 500)
-  })
-}
